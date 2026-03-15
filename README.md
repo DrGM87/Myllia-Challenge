@@ -1,12 +1,15 @@
 # Echoes of Silenced Genes — Kaggle Competition Solution
 
 <p align="center">
-  <img src="assets/banner.png" alt="Competition Banner" width="800"/>
+  <img src="assets/header.png" alt="Echoes of Silenced Genes" width="800"/>
 </p>
+
+<h3 align="center">🏆 Rank 13 out of 219 Teams — Public LB Score: 4.090</h3>
 
 > **Predicting how human cancer cells respond to CRISPR-interference perturbations**
 
 [![Kaggle Competition](https://img.shields.io/badge/Kaggle-Competition-blue?logo=kaggle)](https://kaggle.com/competitions/echoes-of-silenced-genes)
+[![Rank](https://img.shields.io/badge/Rank-13%20%2F%20219-gold?logo=kaggle)](https://kaggle.com/competitions/echoes-of-silenced-genes/leaderboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red.svg)](https://pytorch.org/)
@@ -22,6 +25,7 @@
 - [Repository Structure](#repository-structure)
 - [How to Run](#how-to-run)
 - [Lessons Learned](#lessons-learned)
+- [Competition Constraints](#competition-constraints)
 - [Citation](#citation)
 
 ---
@@ -161,6 +165,11 @@ Introduced **genome-wide LOO synthetic perturbations**: for each of the 5,127 ge
 
 **V23 proved CV→LB is inverted (r ≈ -0.85).** LOO quality tricks inflate CV by overfitting to the train/val split but degrade generalization. The simple V20 baseline remains best.
 
+<p align="center">
+  <img src="assets/v23_runs.png" alt="V23 LOO Quality Isolation — 7 Runs" width="700"/>
+</p>
+<p align="center"><em>V23 LOO Quality Isolation — 7 runs showing the inverse CV/LB correlation</em></p>
+
 **Paradigm shift:** Replogle data works as a **regularizer** (adds noise that prevents overfitting), NOT as a feature source. V23 R5 reversed the entire V10–V13 narrative.
 
 ### Phase 6: Final Submission (V_FINAL) — *"Predict all 120 perturbations"*
@@ -190,7 +199,7 @@ Every cell includes resume/checkpoint logic for Google Colab crash recovery.
 | 5 | V22 | 4.051 | 0.948 | 4× LOO + per-channel |
 | 6 | V20 RUN=4 | 4.033 | 0.981 | 2× LOO |
 
-**Competition context:** 1st place scored 4.45. Our best = 4.090.
+**Competition result: Rank 13 out of 219 teams.** 1st place scored 4.45. Our best = 4.090.
 
 ### Score Progression Over Time
 
@@ -280,7 +289,8 @@ GitHub/
 │   └── v23_submission_analysis.py  # V23 run comparison + LB prediction model
 │
 └── assets/
-    └── banner.png               # (placeholder for competition banner image)
+    ├── header.png               # Competition header image
+    └── v23_runs.png             # V23 LOO quality isolation results
 ```
 
 ### Key Files
@@ -383,6 +393,20 @@ If you use any part of this work, please cite the competition:
 - **Google Colab** for providing GPU compute (A100/T4)
 - **scPerturb / Zenodo** for hosting the Replogle K562 CRISPRi datasets
 - The **Virtual Cell Research Community** for discussions and feedback
+
+---
+
+## Competition Constraints
+
+This competition presented a uniquely challenging environment beyond the scientific problem itself:
+
+- **One submission per day.** Unlike most Kaggle competitions that allow multiple daily submissions, this competition enforced a strict limit of one submission every 24 hours. Every submission was a strategic decision — there was no room for rapid iteration or A/B testing on the leaderboard.
+
+- **Severe CV/LB divergence.** Cross-validation scores consistently failed to predict leaderboard performance. The most dramatic example: V23 showed a **negative correlation** (r ≈ -0.85) between CV and LB across 7 carefully controlled runs. The configuration with the *highest* CV (0.977) produced the *worst* LB (3.772), while the *lowest* CV (0.943) produced the *best* LB (4.064). This made every submission a leap of faith.
+
+- **The compounding effect.** Taken together, these constraints created a uniquely adversarial feedback loop. With unreliable CV, the leaderboard was the only trustworthy signal — but with only one submission per day, each data point took 24 hours to obtain. Exploring bold new ideas meant risking an entire day's submission on something that CV couldn't validate. This naturally pushed toward conservative, incremental changes and made it extremely costly to recover from a wrong turn.
+
+In hindsight, the single-submission constraint was a blessing in disguise — it forced disciplined experimentation and prevented the kind of leaderboard overfitting that plagues competitions with unlimited submissions.
 
 ---
 
