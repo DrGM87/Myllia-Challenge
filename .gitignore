@@ -1,0 +1,86 @@
+# ============================================
+# Myllia Challenge - .gitignore
+# ============================================
+
+# --- Data files (too large for GitHub) ---
+*.h5ad
+*.h5
+*.RDS
+*.pt
+*.pth
+*.bin
+
+# --- Large CSV data files ---
+convergence_*.csv
+sample_submission.csv
+**/Kaggle/
+
+# --- Model checkpoints ---
+*.npz
+*.pkl
+*.pickle
+
+# --- Large submission CSVs (keep only final) ---
+# Individual version submissions are excluded
+submission_v[0-9]*.csv
+submission_A100*.csv
+submission_meta_*.csv
+ensemble_0*.csv
+v23_ens_*.csv
+v17_*.csv
+
+# --- API Keys & Credentials ---
+*.key
+*.secret
+.kaggle/
+kaggle.json
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# --- IDE ---
+.vscode/
+.idea/
+*.code-workspace
+
+# --- Environment ---
+.env
+.venv/
+env/
+venv/
+
+# --- Temporary / generated ---
+vfinal_package_*/
+external_data/
+*.zip
+*.gz
+*.tar
+
+# --- Reports (generated, can be rebuilt) ---
+*_report.html
+meta_ensemble_report.html
+
+# --- Misc large/intermediate files ---
+fold2_A100.pt
+pretrained_A100_v2.pt
+settingV9_*.json
+loo_code.py
+loo_snippet.py
