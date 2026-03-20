@@ -4,12 +4,13 @@
   <img src="assets/header.png" alt="Echoes of Silenced Genes" width="800"/>
 </p>
 
-<h3 align="center">🏆 Rank 13 out of 219 Teams — Public LB Score: 4.090</h3>
+<h3 align="center">🏆 Rank 7 out of 219 Teams — Public LB Score: 4.090 - Private LB Score: 3.30746
+</h3>
 
 > **Predicting how human cancer cells respond to CRISPR-interference perturbations**
 
 [![Kaggle Competition](https://img.shields.io/badge/Kaggle-Competition-blue?logo=kaggle)](https://kaggle.com/competitions/echoes-of-silenced-genes)
-[![Rank](https://img.shields.io/badge/Rank-13%20%2F%20219-gold?logo=kaggle)](https://kaggle.com/competitions/echoes-of-silenced-genes/leaderboard)
+[![Rank](https://img.shields.io/badge/Rank-7%20%2F%20219-gold?logo=kaggle)](https://kaggle.com/competitions/echoes-of-silenced-genes/leaderboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.x-red.svg)](https://pytorch.org/)
@@ -199,7 +200,7 @@ Every cell includes resume/checkpoint logic for Google Colab crash recovery.
 | 5 | V22 | 4.051 | 0.948 | 4× LOO + per-channel |
 | 6 | V20 RUN=4 | 4.033 | 0.981 | 2× LOO |
 
-**Competition result: Rank 13 out of 219 teams.** 1st place scored 4.45. Our best = 4.090.
+**Competition result: Rank 7 out of 219 teams.** Our best public LB = 4.090 vs Private LB = 3.3075.
 
 ### Score Progression Over Time
 
